@@ -204,4 +204,17 @@ class Pair<U, V> {
   public static <U, V> Pair<U, V> of(U a, V b) {
     return new Pair<>(a, b);
   }
+
+  public K getKey() {
+    return first;
+  }
+
+  public V getValue() {
+      return second;
+  }
+
+  @Override
+  public String toString() {
+    return "(" + first + ", " + second + ")";
+  }
 }
