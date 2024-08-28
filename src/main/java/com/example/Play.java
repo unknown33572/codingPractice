@@ -1,8 +1,8 @@
 package com.example;
 
-import java.security.KeyStore.Entry;
-import java.util.Collection;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -21,6 +21,10 @@ public class Play {
     // System.out.println(removeCharacter("madzam", 'm'));
     System.out.println("=====================================");
     System.out.println(maxOccurenceCharacter("madzamm"));
+    System.out.println("=====================================");
+    String[] strs = { "madzammmm", "madzamz", "madzamza" };
+    sortArrayByLength(strs, Sort.ASC);
+    System.out.println(Arrays.toString(strs));
   }
 
   private static void permuteAndPrint(String prefix, String str) {
@@ -141,4 +145,37 @@ public class Play {
     return pair;
   }
 
+  public static void sortArrayByLength(String[] strs, Sort direction) {
+    if (direction.equals(Sort.ASC)) {
+      Arrays.sort(strs, (String s1, String s2) -> Integer.compare(s1.length(), s2.length()));
+    } else {
+      Arrays.sort(strs, (String s1, String s2) -> (-1) * Integer.compare(s2.length(), s1.length()));
+    }
+  }
+
+  public static String[] sortArrayByLengthTwo(String[] strs, Sort direction) {
+    if (direction.equals(Sort.ASC)) {
+      return Arrays.stream(strs).sorted(Comparator.comparingInt(String::length))
+                                .toArray(String[]::new);
+    } else {
+      return Arrays.stream(strs).sorted(Comparator.comparingInt(String::length).reversed())
+                                .toArray(String[]::new);
+    }
+  }
+
+  public static boolean contains(String text, String subText) {
+    return text.indexOf(subText) != -1;
+  }
+
+  public static int countOccurrContains(String text, String subText) {
+    int count = 0;
+    int index = 0;
+
+    while ((index = text.indexOf(subText, index)) != -1) {
+      count++;
+      index += subText.length();
+    }
+
+    return count;
+  }
 }
