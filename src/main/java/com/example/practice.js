@@ -282,6 +282,7 @@ const s = '[](){}';
 console.log(solution(s));
 */
 
+/*
 function solution(string) {
   const stack = [];
 
@@ -299,3 +300,73 @@ function solution(string) {
 const s = 'baabaab';
 
 console.log(solution(s));
+*/
+
+/*
+function solution(prices) {
+  const n = prices.length;
+  const answer = new Array(n).fill(0);
+
+  const stack = [0];
+  for (let i = 1; i < n; i++) {
+    while (stack.length > 0 && prices[i] < prices[stack[stack.length - 1]]) {
+      const j = stack.pop();
+      answer[j] = i - j;
+    }
+    stack.push(i);
+  }
+
+  while (stack.length > 0) {
+    const j = stack.pop();
+    answer[j] = n - 1 - j;
+  }
+
+  return answer;
+}
+
+const prices = [1, 2, 3, 2, 3];
+
+console.log(solution(prices));
+*/
+
+function solution(board, moves) {
+  const lanes = [...Array(board[0].length)].map(() => []);
+
+  for (let i = board.length - 1; i >= 0; i--) {
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] > 0) {
+        lanes[j].push(board[i][j]);
+      }
+    }
+  }
+
+  const bucket = [];
+
+  let answer = 0;
+
+  for (const move of moves) {
+    if (lanes[move - 1].length > 0) {
+      const doll = lanes[move - 1].pop();
+      if (bucket.length > 0 && bucket[bucket.length - 1] === doll) {
+        bucket.pop();
+        answer += 2;
+      } else {
+        bucket.push(doll);
+      }
+    }
+  }
+
+  return answer;
+}
+
+const board = [
+  [0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 3],
+  [0, 2, 5, 0, 1],
+  [4, 2, 4, 4, 2],
+  [3, 5, 1, 3, 1],
+];
+
+const moves = [1, 5, 3, 5, 1, 2, 1, 4];
+
+console.log(solution(board, moves));
