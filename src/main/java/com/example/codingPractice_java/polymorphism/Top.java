@@ -1,4 +1,4 @@
-package com.example;
+package com.example.codingPractice_java.polymorphism;
 
 public class Top {
   int x = 100;
@@ -12,7 +12,7 @@ public class Top {
     this.x = x;
   }
 
-  int getX() {
+  public int getX() {
     return x;
   }
   

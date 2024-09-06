@@ -1,4 +1,4 @@
-package com.example;
+package com.example.codingPractice_java.polymorphism;
 
 public class Parent {
   public Parent() {

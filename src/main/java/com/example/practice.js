@@ -329,6 +329,7 @@ const prices = [1, 2, 3, 2, 3];
 console.log(solution(prices));
 */
 
+/*
 function solution(board, moves) {
   const lanes = [...Array(board[0].length)].map(() => []);
 
@@ -370,3 +371,23 @@ const board = [
 const moves = [1, 5, 3, 5, 1, 2, 1, 4];
 
 console.log(solution(board, moves));
+*/
+
+class Queue {
+  items = [];
+  front = 0;
+  rear = 0;
+
+  push(item) {
+    this.items.push(item);
+    this.rear++;
+  }
+
+  pop() {
+    return this.items[this.front++];
+  }
+
+  isEmpty() {
+    return this.front === this.rear;
+  }
+}
