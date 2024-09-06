@@ -21,11 +21,7 @@ public class Demo {
     // System.out.println(child2.getName());
     // System.out.println(child2.getAge());
 
-    // for (Map.Entry<Character, Integer> entry :
-    // countDuplicateCharacters("Programming").entrySet()) {
-    // System.out.println(entry.getKey() + ": " + entry.getValue());
-    // }
-
+    
     // System.out.println(firstNonRepeatedCharacter("Pprogramming"));
 
     // System.out.println(reverseWords("Programming is fun"));
@@ -40,23 +36,13 @@ public class Demo {
     // System.out.println("Vowels: " + result.first);
     // System.out.println("Consonants: " + result.second);
 
-    String x = joinByDelimiter('/', "JavaProgramming", "is", "fun");
-    System.out.println(x);
+    // String x = joinByDelimiter('/', "JavaProgramming", "is", "fun");
+    // System.out.println(x);
 
-    String y = joinByDelimiterTwo('/', "PythonProgramming", "is", "fun");
-    System.out.println(y);
+    // String y = joinByDelimiterTwo('/', "PythonProgramming", "is", "fun");
+    // System.out.println(y);
   }
 
-  public static Map<Character, Integer> countDuplicateCharacters(String str) {
-    Map<Character, Integer> result = new HashMap<>();
-
-    for (int i = 0; i < str.length(); i++) {
-      char ch = str.charAt(i);
-      result.compute(ch, (key, value) -> (value == null) ? 1 : value + 1);
-    }
-
-    return result;
-  }
 
   public static Map<Character, Long> countDuplicateCharactersTwo(String str) {
     Map<Character, Long> result = str.chars()
