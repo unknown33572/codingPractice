@@ -543,6 +543,7 @@ function solution(card1, card2, goal) {
 }
 */
 
+/*
 function countSort(arr, k) {
   const hashTable = new Array(k + 1).fill(0);
 
@@ -567,3 +568,169 @@ function solution(arr, target) {
   }
   return false;
 }
+*/
+
+/*
+function polynomiaHash(str) {
+  const p = 31;
+  const m = 1_000_000_007;
+  let hashValue = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    hashValue = (hashValue * p + str.charCodeAt(i)) % m;
+  }
+
+  return hashValue;
+}
+
+function solution(stringList, queryList) {
+  const hashList = stringList.map((str) => polynomiaHash(str));
+
+  // console.log(hashList);
+  const result = [];
+  for (const query of queryList) {
+    const queryHash = polynomiaHash(query);
+    if (hashList.includes(queryHash)) {
+      result.push(true);
+    } else {
+      result.push(false);
+    }
+  }
+
+  return result;
+}
+
+const stringList = ['abc', 'def', 'ghi', 'jkl'];
+
+const queryList = ['abc', 'def', 'huf', 'jkl'];
+
+console.log(solution(stringList, queryList));
+*/
+
+/*
+function solution(participant, completion) {
+  const obj = {};
+
+  for (const p of participant) {
+    if (obj[p]) {
+      obj[p]++;
+    } else {
+      obj[p] = 1;
+    }
+  }
+
+  for (const c of completion) {
+    obj[c]--;
+  }
+
+  for (const key in obj) {
+    if (obj[key] > 0) {
+      return key;
+    }
+  }
+}
+
+const participant = ['leo', 'kiki', 'eden'];
+
+const completion = ['eden', 'kiki'];
+
+console.log(solution(participant, completion));
+*/
+
+const isShallowEqual = (obj1, obj2) => {
+  const objKeys1 = Object.keys(obj1);
+  const objKeys2 = Object.keys(obj2);
+
+  if (objKeys1.length !== objKeys2.length) return false;
+
+  for (const key of objKeys1) {
+    const value1 = obj1[key];
+    const value2 = obj2[key];
+
+    if (value1 !== value2) return false;
+  }
+
+  return true;
+};
+
+function solution(want, number, discount) {
+  const wantObj = {};
+
+  for (let i = 0; i < want.length; i++) {
+    wantObj[want[i]] = number[i];
+  }
+
+  let answer = 0;
+
+  for (let i = 0; i < discount.length - 9; i++) {
+    const discountObj = {};
+
+    for (let j = i; j < i + 10; j++) {
+      if (wantObj[discount[j]]) {
+        discountObj[discount[j]] = (discountObj[discount[j]] || 0) + 1;
+      }
+    }
+
+    if (isShallowEqual(discountObj, wantObj)) {
+      answer++;
+    }
+  }
+
+  return answer;
+}
+
+const want = ["a", "b", "c"];
+const number = [1, 1, 1];
+const discount = ["f", "c", "a", "b", "c", "g", "k", "z", "l", "n", "r", "n", "u", "q", "m"];
+
+console.log(solution(want, number, discount));
+
+
+const want2 = ["banana", "apple", "rice", "pork", "pot"]
+const number2 = [3, 2, 2, 2, 1]
+const discount2 = ["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]
+
+console.log(solution(want2, number2, discount2));
+
+// function isShallowEqual(obj1, obj2) {
+//   const objKeys1 = Object.keys(obj1);
+//   const objKeys2 = Object.keys(obj2);
+
+//   if (objKeys1.length !== objKeys2.length) return false;
+
+//   for (const key of objKeys1) {
+//     if (obj1[key] !== obj2[key]) return false;
+//   }
+
+//   return true;
+// };
+
+// function solution(want, number, discount) {
+//   const wantObj = {};
+
+//   for (let i = 0; i < want.length; i++) {
+//     wantObj[want[i]] = number[i];
+//   }
+
+//   let answer = 0;
+
+//   for (let i = 0; i <= discount.length - 10; i++) {
+//     const discountObj = {};
+
+//     for (let j = i; j < i + 10; j++) {
+//       discountObj[discount[j]] = (discountObj[discount[j]] || 0) + 1;
+//     }
+
+//     if (isShallowEqual(discountObj, wantObj)) {
+//       answer++;
+//     }
+//   }
+
+//   return answer;
+// }
+
+// const want = ['a', 'b', 'c'];
+// const number = [1, 1, 1];
+// const discount = ['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c'];
+
+// console.log(solution(want, number, discount));
