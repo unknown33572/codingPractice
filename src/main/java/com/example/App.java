@@ -6,6 +6,7 @@ public class App
 {
     public static void bubbleSort(int[] arr) {
         int arrLength = arr.length;
+
         for (int i = 0; i < arrLength - 1; i++) {
             for (int j = 0; j < arrLength - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -123,6 +124,22 @@ public class App
         temp = a;
         a = b;
         b = temp;
+    }
+
+    public static void heapSort(int arr[]) {
+        int n = arr.length;
+
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heapify(arr, n, i);
+        }
+
+        for (int i = n - 1; i > 0; i--) {
+            int temp = arr[0];
+            arr[0] = arr[i];
+            arr[i] = temp;
+
+            heapify(arr, i, 0);
+        }
     }
 
     public static void main( String[] args )
