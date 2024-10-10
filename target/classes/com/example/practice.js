@@ -378,6 +378,11 @@ class Queue {
   front = 0;
   rear = 0;
 
+  constructor(array) {
+    this.items = array;
+    this.rear = array.length;
+  }
+
   push(item) {
     this.items.push(item);
     this.rear++;
@@ -390,4 +395,342 @@ class Queue {
   isEmpty() {
     return this.front === this.rear;
   }
+
+  size() {
+    return this.rear - this.front;
+  }
+
+  first() {
+    return this.items[this.front];
+  }
 }
+
+/*
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.next = null;
+  }
+}
+
+class LinkedListQueue {
+  constructor() {
+    this.head = null;
+    this.tail = null;
+    this.size = 0;
+  }
+
+  push(data) {
+    const newNode = new Node(data);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      this.tail.next = newNode;
+      this.tail = newNode;
+    }
+
+    this.size++;
+  }
+
+  pop() {
+    if (!this.head) {
+      return null;
+    }
+
+    const removeNode = this.head;
+    this.head = this.head.next;
+
+    if (!this.head) {
+      this.tail = null;
+    }
+
+    this.size--;
+
+    return removeNode.data;
+  }
+
+  isEmpty() {
+    return this.size === 0;
+  }
+
+}
+
+const queue = new Queue();
+queue.push(1);
+queue.push(2);
+
+console.log(queue.pop());
+console.log(queue.pop());
+
+const linkedListQueue = new LinkedListQueue();
+linkedListQueue.push(1);
+linkedListQueue.push(2);
+
+console.log(linkedListQueue.pop());
+console.log(linkedListQueue.pop());
+*/
+
+/*
+function solution(N, K) {
+  const queue = new Queue();
+
+  for (let i = 1; i <= N; i++) {
+    queue.push(i);
+  }
+
+  while (queue.size() > 1) {
+    for (let i = 0; i < K - 1; i++) {
+      queue.push(queue.pop());
+    }
+    queue.pop();
+  }
+
+  return queue.pop();
+}
+
+const N = 5;
+const K = 2;
+
+console.log(solution(N, K));
+*/
+
+/*
+function solution(progresses, speeds) {
+  const answer = [];
+  const n = progresses.length;
+
+  const daysLeft = progresses.map((progresses, index) => Math.ceil((100 - progresses) / speeds[index]));
+
+  let count = 0;
+  let maxDay = daysLeft[0];
+
+  for (let i = 0; i < n; i++) {
+    if (daysLeft[i] <= maxDay) {
+      count++;
+    } else {
+      answer.push(count);
+      count = 1;
+      maxDay = daysLeft[i];
+    }
+  }
+
+  answer.push(count);
+  return answer;
+}
+*/
+
+/*
+function solution(card1, card2, goal) {
+  cards1 = new Queue(card1);
+  card2 = new Queue(card2);
+  goal = new Queue(goal);
+
+  while (!goal.isEmpty()) {
+    if (!cards1.isEmpty() && cards1.first() === goal.first()) {
+      cards1.pop();
+      goal.pop();
+    } else if (!card2.isEmpty() && card2.first() === goal.first()) {
+      card2.pop();
+      goal.pop();
+    } else {
+      break;
+    }
+  }
+
+  return goal.isEmpty() ? "Yes" : "No";
+}
+*/
+
+/*
+function countSort(arr, k) {
+  const hashTable = new Array(k + 1).fill(0);
+
+  for (const num of arr) {
+    if (num <= k) {
+      hashTable[num] = 1;
+    }
+  }
+  console.log(hashTable.length);
+  return hashTable;
+}
+
+function solution(arr, target) {
+  const hashTable = countSort(arr, targer);
+
+  for (const num of arr) {
+    const complement = target - num;
+
+    if (complement !== num && complement >= 0 && complement <= target && hashTable[complement] === 1) {
+      return true;
+    }
+  }
+  return false;
+}
+*/
+
+/*
+function polynomiaHash(str) {
+  const p = 31;
+  const m = 1_000_000_007;
+  let hashValue = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    hashValue = (hashValue * p + str.charCodeAt(i)) % m;
+  }
+
+  return hashValue;
+}
+
+function solution(stringList, queryList) {
+  const hashList = stringList.map((str) => polynomiaHash(str));
+
+  // console.log(hashList);
+  const result = [];
+  for (const query of queryList) {
+    const queryHash = polynomiaHash(query);
+    if (hashList.includes(queryHash)) {
+      result.push(true);
+    } else {
+      result.push(false);
+    }
+  }
+
+  return result;
+}
+
+const stringList = ['abc', 'def', 'ghi', 'jkl'];
+
+const queryList = ['abc', 'def', 'huf', 'jkl'];
+
+console.log(solution(stringList, queryList));
+*/
+
+/*
+function solution(participant, completion) {
+  const obj = {};
+
+  for (const p of participant) {
+    if (obj[p]) {
+      obj[p]++;
+    } else {
+      obj[p] = 1;
+    }
+  }
+
+  for (const c of completion) {
+    obj[c]--;
+  }
+
+  for (const key in obj) {
+    if (obj[key] > 0) {
+      return key;
+    }
+  }
+}
+
+const participant = ['leo', 'kiki', 'eden'];
+
+const completion = ['eden', 'kiki'];
+
+console.log(solution(participant, completion));
+*/
+
+const isShallowEqual = (obj1, obj2) => {
+  const objKeys1 = Object.keys(obj1);
+  const objKeys2 = Object.keys(obj2);
+
+  if (objKeys1.length !== objKeys2.length) return false;
+
+  for (const key of objKeys1) {
+    const value1 = obj1[key];
+    const value2 = obj2[key];
+
+    if (value1 !== value2) return false;
+  }
+
+  return true;
+};
+
+function solution(want, number, discount) {
+  const wantObj = {};
+
+  for (let i = 0; i < want.length; i++) {
+    wantObj[want[i]] = number[i];
+  }
+
+  let answer = 0;
+
+  for (let i = 0; i < discount.length - 9; i++) {
+    const discountObj = {};
+
+    for (let j = i; j < i + 10; j++) {
+      if (wantObj[discount[j]]) {
+        discountObj[discount[j]] = (discountObj[discount[j]] || 0) + 1;
+      }
+    }
+
+    if (isShallowEqual(discountObj, wantObj)) {
+      answer++;
+    }
+  }
+
+  return answer;
+}
+
+const want = ["a", "b", "c"];
+const number = [1, 1, 1];
+const discount = ["f", "c", "a", "b", "c", "g", "k", "z", "l", "n", "r", "n", "u", "q", "m"];
+
+console.log(solution(want, number, discount));
+
+
+const want2 = ["banana", "apple", "rice", "pork", "pot"]
+const number2 = [3, 2, 2, 2, 1]
+const discount2 = ["chicken", "apple", "apple", "banana", "rice", "apple", "pork", "banana", "pork", "rice", "pot", "banana", "apple", "banana"]
+
+console.log(solution(want2, number2, discount2));
+
+// function isShallowEqual(obj1, obj2) {
+//   const objKeys1 = Object.keys(obj1);
+//   const objKeys2 = Object.keys(obj2);
+
+//   if (objKeys1.length !== objKeys2.length) return false;
+
+//   for (const key of objKeys1) {
+//     if (obj1[key] !== obj2[key]) return false;
+//   }
+
+//   return true;
+// };
+
+// function solution(want, number, discount) {
+//   const wantObj = {};
+
+//   for (let i = 0; i < want.length; i++) {
+//     wantObj[want[i]] = number[i];
+//   }
+
+//   let answer = 0;
+
+//   for (let i = 0; i <= discount.length - 10; i++) {
+//     const discountObj = {};
+
+//     for (let j = i; j < i + 10; j++) {
+//       discountObj[discount[j]] = (discountObj[discount[j]] || 0) + 1;
+//     }
+
+//     if (isShallowEqual(discountObj, wantObj)) {
+//       answer++;
+//     }
+//   }
+
+//   return answer;
+// }
+
+// const want = ['a', 'b', 'c'];
+// const number = [1, 1, 1];
+// const discount = ['a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c', 'a', 'b', 'c'];
+
+// console.log(solution(want, number, discount));

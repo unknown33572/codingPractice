@@ -4,9 +4,9 @@ public class Parent {
   public Parent() {
     System.out.println("Parent constructor");
   }
-  public Parent(int x) {
-    System.out.println("Parent constructor with x" + x);
-  }
+  // public Parent(int x) {
+  //   System.out.println("Parent constructor with x" + x);
+  // }
 
   public void setName(String name) {
     System.out.println("Parent setName");
@@ -14,5 +14,9 @@ public class Parent {
 
   public String getName() {
     return "Parent getName";
+  }
+
+  protected void show() {
+    System.out.println("Parent show");
   }
 }

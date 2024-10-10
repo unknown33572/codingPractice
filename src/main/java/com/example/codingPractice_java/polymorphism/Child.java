@@ -24,4 +24,9 @@ public class Child extends Parent {
   public int getAge() {
     return age;
   }
+
+  @Override
+  public void show() {
+    System.out.println("Child show");
+  }
 }

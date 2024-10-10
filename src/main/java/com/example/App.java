@@ -126,52 +126,72 @@ public class App
         b = temp;
     }
 
-    public static void heapSort(int arr[]) {
-        int n = arr.length;
+    // public static void heapSort(int arr[]) {
+    //     int n = arr.length;
 
-        for (int i = n / 2 - 1; i >= 0; i--) {
-            heapify(arr, n, i);
-        }
+    //     for (int i = n / 2 - 1; i >= 0; i--) {
+    //         heapify(arr, n, i);
+    //     }
 
-        for (int i = n - 1; i > 0; i--) {
-            int temp = arr[0];
-            arr[0] = arr[i];
-            arr[i] = temp;
+    //     for (int i = n - 1; i > 0; i--) {
+    //         int temp = arr[0];
+    //         arr[0] = arr[i];
+    //         arr[i] = temp;
 
-            heapify(arr, i, 0);
-        }
-    }
+    //         heapify(arr, i, 0);
+    //     }
+    // }
 
     public static void main( String[] args )
     {
         // System.out.println( "Hello World!" );
-        int[] arr = new int[5];
-        arr[0] = 5;
-        arr[1] = 4;
-        arr[2] = 23;
-        arr[3] = 12;
-        arr[4] = 1;
-        bubbleSort(arr);
-        System.out.println(Arrays.toString(arr));
+        // int[] arr = new int[5];
+        // arr[0] = 5;
+        // arr[1] = 4;
+        // arr[2] = 23;
+        // arr[3] = 12;
+        // arr[4] = 1;
+        // bubbleSort(arr);
+        // System.out.println(Arrays.toString(arr));
 
-        int[] arr2 = new int[] {5, 4, 23, 12, 1};
-        selectedSort(arr2);
-        System.out.println(Arrays.toString(arr2));
+        // int[] arr2 = new int[] {5, 4, 23, 12, 1};
+        // selectedSort(arr2);
+        // System.out.println(Arrays.toString(arr2));
 
-        int[] arr3 = new int[] {5, 4, 23, 12, 1};
-        App app = new App();
-        app.insertSort(arr3);
-        System.out.println(Arrays.toString(arr3));
+        // int[] arr3 = new int[] {5, 4, 23, 12, 1};
+        // App app = new App();
+        // app.insertSort(arr3);
+        // System.out.println(Arrays.toString(arr3));
 
-        int[] arr4 = new int[] {5, 4, 23, 12, 1};
-        quickSort(arr4, 0, arr4.length - 1);
-        System.out.println(Arrays.toString(arr4));
+        // int[] arr4 = new int[] {5, 4, 23, 12, 1};
+        // quickSort(arr4, 0, arr4.length - 1);
+        // System.out.println(Arrays.toString(arr4));
 
-        int a, b;
-        a = 10;
-        b = 20;
-        System.out.println("Before swap: a = " + a + " b = " + b);
-        swap(a, b);
-        System.out.println("After swap: a = " + a + " b = " + b);
+        // int a, b;
+        // a = 10;
+        // b = 20;
+        // System.out.println("Before swap: a = " + a + " b = " + b);
+        // swap(a, b);
+        // System.out.println("After swap: a = " + a + " b = " + b);
+
+        for (int i = 1; i <= 1000; i++) {
+            int a = 0;
+ 
+            for (int j = 1; j <= i; j++) {
+ 
+                if (i % j == 0) {
+                    a = a + j;
+                }
+            }
+            if (i == a - i) {
+                System.out.print(i + " ");
+            }
+ 
+        }
+
+        // int a = 10;
+        // int b = 8;
+
+        // System.out.println(a % b);
     }
 }

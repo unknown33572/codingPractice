@@ -20,7 +20,7 @@ public class Play {
     // System.out.println("=====================================");
     // System.out.println(removeCharacter("madzam", 'm'));
     System.out.println("=====================================");
-    System.out.println(maxOccurenceCharacter("madzamm"));
+    // System.out.println(maxOccurenceCharacter("madzamm"));
     System.out.println("=====================================");
     String[] strs = { "madzammmm", "madzamz", "madzamza" };
     sortArrayByLength(strs, Sort.ASC);
@@ -82,20 +82,20 @@ public class Play {
     return count;
   }
 
-  private static String removeDuplicates(String str) {
-    // return str.chars().distinct().collect(StringBuilder::new,
-    // StringBuilder::appendCodePoint, StringBuilder::append)
-    // .toString();
+  // private static String removeDuplicates(String str) {
+  //   // return str.chars().distinct().collect(StringBuilder::new,
+  //   // StringBuilder::appendCodePoint, StringBuilder::append)
+  //   // .toString();
 
-    char[] chArray = str.toCharArray();
-    StringBuilder sb = new StringBuilder();
+  //   char[] chArray = str.toCharArray();
+  //   StringBuilder sb = new StringBuilder();
 
-    for (char ch : chArray) {
-      if (sb.indexOf(String.valueOf(ch)) == -1) {
-        sb.append(ch);
-      }
-    }
-  }
+  //   for (char ch : chArray) {
+  //     if (sb.indexOf(String.valueOf(ch)) == -1) {
+  //       sb.append(ch);
+  //     }
+  //   }
+  // }
 
   private static String removeCharacter(String str, char ch) {
     return str.replaceAll(Pattern.quote(String.valueOf(ch)), "");
@@ -114,36 +114,36 @@ public class Play {
     return sb.toString();
   }
 
-  private static Pair<Character, Integer> maxOccurenceCharacter(String str) {
-    Map<Character, Integer> map = new HashMap<>();
-    char[] chStr = str.toCharArray();
+  // private static Pair<Character, Integer> maxOccurenceCharacter(String str) {
+  //   Map<Character, Integer> map = new HashMap<>();
+  //   char[] chStr = str.toCharArray();
 
-    for (int i = 0; i < chStr.length; i++) {
-      char currCh = chStr[i];
+  //   for (int i = 0; i < chStr.length; i++) {
+  //     char currCh = chStr[i];
 
-      if (!Character.isWhitespace(currCh)) {
-        Integer noCh = map.get(currCh);
+  //     if (!Character.isWhitespace(currCh)) {
+  //       Integer noCh = map.get(currCh);
 
-        if (noCh == null) {
-          map.put(currCh, 1);
-        } else {
-          map.put(currCh, ++noCh);
-        }
-      }
-    }
+  //       if (noCh == null) {
+  //         map.put(currCh, 1);
+  //       } else {
+  //         map.put(currCh, ++noCh);
+  //       }
+  //     }
+  //   }
 
-    int maxCount = Collections.max(map.values());
-    char maxChar = Character.MIN_VALUE;
+  //   int maxCount = Collections.max(map.values());
+  //   char maxChar = Character.MIN_VALUE;
 
-    for (Map.Entry<Character, Integer> entry : map.entrySet()) {
-      if (entry.getValue() == maxCount) {
-        maxChar = entry.getKey();
-      }
-    }
+  //   for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+  //     if (entry.getValue() == maxCount) {
+  //       maxChar = entry.getKey();
+  //     }
+  //   }
 
-    Pair<Character, Integer> pair = Pair.of(maxChar, maxCount);
-    return pair;
-  }
+  //   // Pair<Character, Integer> pair = Pair.of(maxChar, maxCount);
+  //   // return pair;
+  // }
 
   public static void sortArrayByLength(String[] strs, Sort direction) {
     if (direction.equals(Sort.ASC)) {

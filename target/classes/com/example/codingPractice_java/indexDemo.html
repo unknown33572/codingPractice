@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .btn-menu {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      border: 1px solid rgba(255, 255, 255, .5);
+      color: white;
+      padding: .5rem 1rem;
+    }
+
+    .main-nav {
+      background: gray;
+      width: 0;
+      position: absolute;
+      z-index: 2;
+      top: 50px;
+      right: 0;
+      overflow: hidden;
+      transition: .5s;
+    }
+
+    .main-nav li {
+      text-align: center;
+      margin: 2rem 0;
+      list-style: none;
+    }
+
+    .main-nav a {
+      display: block;
+    }
+
+    .open-menu {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <button class="btn-menu">Menu</button>
+    <ul class="main-nav">
+      <li><a href="#">About</a></li>
+      <li><a href="#">News</a></li>
+      <li><a href="#">Speakers</a></li>
+      <li><a href="#">Ticket</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const btnMenu = document.querySelector('.btn-menu');
+    const mainNav = document.querySelector('.main-nav');
+
+    btnMenu.addEventListener('click', () => {
+      mainNav.classList.toggle('open-menu');
+
+      // if (mainNav.classList.contains('open-menu')) {
+      //   btnMenu.textContent = 'Close';
+      // } else {
+      //   btnMenu.textContent = 'Menu';
+      // }
+
+      if (btnMenu.innerHTML === 'Menu') {
+        btnMenu.innerHTML = 'Close';
+      } else {
+        btnMenu.innerHTML = 'Menu';
+      }
+    });
+  </script>
+</body>
+</html>
